@@ -4,8 +4,12 @@
 if [ -e /dev/net/tun ]; then
   :
 else
-  echo "/dev/net/tun doesn't exist. Please create it first." >&2
-  exit 1
+  # mac 无/dev/net/tun设备，容器内手动创建
+  sudo mkdir /dev/net
+  sudo mknod /dev/net/tun c 10 200
+  sudo ip tuntap add mode tap tap
+  #echo "/dev/net/tun doesn't exist. Please create it first." >&2
+  #exit 1
 fi
 
 # 定义一个处理函数，用于在接收到 INT 信号时退出脚本
