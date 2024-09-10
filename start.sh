@@ -32,4 +32,8 @@ sleep 1
 
 expect -f expect.exp
 
-./gost/gost -L socks5://:1080
+if [ "$(uname -m)" = "x86_64" ]; then
+  ./gost_amd64/gost -L socks5://:1080
+else
+  ./gost_armd64/gost -L socks5://:1080
+fi

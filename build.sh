@@ -1,16 +1,15 @@
 #!/bin/bash
 
 # 下载gost
-pla=linux_arm64
-fileName=gost_3.0.0-nightly.20240904_$pla.tar.gz
-gost_base_url=https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240904/$fileName
-
-if [ "$(uname -m)" = "x86_64" ]; then
-  pla=linux_amd64
-  wget https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240904/$fileName -o $fileName
-else
-  curl https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240904/$fileName -o $fileName
-fi
-mkdir gost
-tar zxvf $fileName -C ./gost
-chmod +x ./gost/gost
+fileName="gost_3.0.0-nightly.20240904_$pla.tar.gz"
+gost_base_url="https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240904/$fileName"
+pla="linux_arm64"
+mkdir gost_arm64
+wget $gost_base_url
+tar zxvf $fileName -C ./gost_arm64
+chmod +x ./gost_arm64/gost
+pla="linux_amd64"
+mkdir gost_amd64
+wget $gost_base_url
+tar zxvf $fileName -C ./gost_amd64
+chmod +x ./gost_amd64/gost
