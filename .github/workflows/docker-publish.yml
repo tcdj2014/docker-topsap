@@ -2,8 +2,9 @@ name: Docker-publish
 
 on:
   push:
-    tags:
-      - v*
+    # tags:
+    #   - v*
+    branches: [ main ]
 
 env:
   IMAGE_NAME: docker-topsap
