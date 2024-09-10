@@ -7,4 +7,6 @@ expect "Please enter user and password"
 send "{{user_name}}\n"
 expect "Password:"
 send "{{password}}\n"
+expect "Login Success!"
+send "echo vpn登录成功\n"
 interact
