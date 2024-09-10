@@ -4,7 +4,8 @@ services:
     container_name: topsap
     restart: always
     ports:
-      - 1088:1080
+      - 1088:1080 # socks5
+      - 1089:1081 # http
     cap_add:
       - NET_ADMIN
     environment:
