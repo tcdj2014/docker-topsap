@@ -31,24 +31,24 @@ cd /opt/TopSAP && ./sv_websrv >/home/work/sv_websrv.log 2>&1 &
 
 sleep 1
 
-#expect -f expect.exp
-#
-#for i in {1..3}; do
-#  if [ -e "/sys/class/net/tun0" ]; then
-#    # 如果设备存在，跳出循环
-#    danted -f /etc/danted.conf &
-#    break
-#  else
-#    # 如果设备不存在，等待三秒后进行下一次判断
-#    sleep 3
-#  fi
-#done
-#
-## 循环结束后判断设备是否存在
-#if [ ! -e "/sys/class/net/tun0" ]; then
-#  echo "Device tun0 not found."
-#  exit 1
-#fi
+expect -f expect.exp
+
+for i in {1..3}; do
+  if [ -e "/sys/class/net/tunl0" ]; then
+    # 如果设备存在，跳出循环
+    danted -f /etc/danted.conf &
+    break
+  else
+    # 如果设备不存在，等待三秒后进行下一次判断
+    sleep 3
+  fi
+done
+
+# 循环结束后判断设备是否存在
+if [ ! -e "/sys/class/net/tunl0" ]; then
+  echo "Device tun0 not found."
+  exit 1
+fi
 
 # 添加NAT转发，使其他请求可以走正常出口，不全部走代理，例如公网请求
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
