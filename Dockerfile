@@ -10,9 +10,6 @@ ENV PASSWORD=""
 
 COPY TopSAP-3.5.2.36.2-x86_64.deb .
 COPY TopSAP-3.5.2.36.2-aarch64.deb .
-# gost
-COPY build.sh .
-RUN sh build.sh
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
   ln -fs /usr/share/zoneinfo/Asia /etc/localtime && \
@@ -26,6 +23,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   rm -r TopSAP-3.5.2.36.2-x86_64.deb TopSAP-3.5.2.36.2-aarch64.deb && \
   apt-get install -y expect vim procps wget && \
   rm -rf /var/lib/apt/lists/*
+
+# gost
+COPY build.sh .
+RUN sh build.sh
 
 COPY start.sh .
 COPY danted.conf /etc
