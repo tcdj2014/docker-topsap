@@ -21,7 +21,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
    # 根据架构安装对应的 TopSAP
   if [ "$(uname -m)" = "x86_64" ]; then dpkg -i TopSAP-3.5.2.36.2-x86_64.deb; else dpkg -i TopSAP-3.5.2.36.2-aarch64.deb; fi && \
   rm -r TopSAP-3.5.2.36.2-x86_64.deb TopSAP-3.5.2.36.2-aarch64.deb && \
-  apt-get install -y expect vim procps && \
+  apt-get install -y expect vim procps wget && \
   rm -rf /var/lib/apt/lists/*
 
 COPY start.sh .
