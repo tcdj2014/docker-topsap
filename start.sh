@@ -35,5 +35,5 @@ expect -f expect.exp
 if [ "$(uname -m)" = "x86_64" ]; then
   ./gost_amd64/gost -L socks5://:1080
 else
-  ./gost_armd64/gost -L socks5://:1080
+  ./gost_arm64/gost -L socks5://:1080
 fi
