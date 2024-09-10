@@ -1,0 +1,14 @@
+services:
+  topsap:
+    image: tangxm1314/docker-topsap
+    container_name: topsap
+    restart: always
+    ports:
+      - 1088:1080
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - TZ=Asia/Shanghai # 设置时区
+      - 'USER_NAME='
+      - 'PASSWORD='
+      - 'SERVER_ADDRESS='
