@@ -24,6 +24,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get install -y expect vim procps wget && \
   rm -rf /var/lib/apt/lists/*
 
+COPY build.sh .
+RUN sh build.sh
+
 COPY start.sh .
 COPY danted.conf /etc
 COPY expect.exp .
