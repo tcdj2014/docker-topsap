@@ -6,6 +6,7 @@ services:
     ports:
       - 1088:1080 # socks5
       - 1089:1081 # http
+      - 1090:1082 # http通道
     cap_add:
       - NET_ADMIN
     environment:
