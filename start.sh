@@ -33,5 +33,5 @@ sleep 1
 expect -f expect.exp
 
 
-./gost/gost -L socks5://:1080 http://:1081
+./gost/gost -L socks5://:1080 -L http://:1081
 
